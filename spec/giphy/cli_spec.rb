@@ -25,6 +25,7 @@ describe Giphy::CLI do
         expect(subject).
           to receive(:system).
           with("echo 'Showing the GIF on your browser'")
+        expect(Launchy).to receive(:open)
         subject.search
       end
 
@@ -41,6 +42,7 @@ describe Giphy::CLI do
       it "echoes a message to the console and opens the url using Kernel#system" do
         expect(subject).to receive(:system).
           with("echo 'Showing the GIF on your browser'")
+        expect(Launchy).to receive(:open)
         subject.search
       end
 
