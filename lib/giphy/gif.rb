@@ -56,6 +56,10 @@ module Giphy
       @fixed_width_downsampled_image ||= image(images['fixed_width_downsampled'])
     end
 
+    def downsized_image
+      @downsized_image ||= image(images['downsized'])
+    end
+
     def original_image
       @original_image ||= image(images['original'])
     end

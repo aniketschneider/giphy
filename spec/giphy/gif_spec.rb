@@ -41,6 +41,13 @@ describe Giphy::Gif do
           "width"  => "200",
           "height" => "128"
         },
+        "downsized" => {
+          "url"    => "http://media0.giphy.com/media/Pvbwe3TghH6ko/downsized.gif",
+          "width"  => "400",
+          "height" => "256",
+          "size"   => "1477042",
+          "frames" => "21"
+        },
         "original" => {
           "url"    => "http://media0.giphy.com/media/Pvbwe3TghH6ko/giphy.gif",
           "width"  => "400",
@@ -74,6 +81,11 @@ describe Giphy::Gif do
     its(:bitly_fullscreen_url) { should eq URI('http://gph.is/18MZ2yc') }
     its(:bitly_tiled_url)      { should eq URI('http://gph.is/18MZ2ye') }
     its(:embed_url)            { should eq URI('http://giphy.com/embed/Pvbwe3TghH6ko') }
+
+    it "has a downsized image" do
+      expect(subject.downsized_image.url.to_s).
+        to eq("http://media0.giphy.com/media/Pvbwe3TghH6ko/downsized.gif")
+    end
   end
 
   context "when initialized with an empty/invalid hash" do
