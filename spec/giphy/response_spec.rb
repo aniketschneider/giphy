@@ -37,6 +37,14 @@ describe Giphy::Response do
       end
     end
 
+    context "when response contains blank data" do
+      let(:hash) { { 'data' => [] } }
+
+      it "raises an appropriate error" do
+        expect{ subject.data }.to raise_error Giphy::Errors::EmptyResponse
+      end
+    end
+
     context "when response is empty" do
       let(:hash) { nil }
 

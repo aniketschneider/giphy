@@ -10,7 +10,12 @@ module Giphy
 
     def data
       raise Giphy::Errors::Unexpected unless response.body
-      response.body['data'] || raise(Giphy::Errors::API.new(error))
+      if response.body['data'].nil?
+        raise Giphy::Errors::API.new(error)
+      elsif response.body['data'].empty?
+        raise Giphy::Errors::EmptyResponse.new
+      end
+      response.body['data']
     end
 
     private
