@@ -21,9 +21,9 @@ describe Giphy::Search do
   end
 
   describe "#translate" do
-    it "returns a batch of Gifs from the client result" do
+    it "returns a single Gif from the client result" do
       allow(client).to receive(:translate).with('word').and_return(client_result)
-      allow(Giphy::Gif).to receive(:build_batch_from).with(client_result).and_return(response)
+      allow(Giphy::Gif).to receive(:new).with(client_result).and_return(response)
       expect(subject.translate('word')).to eq response
     end
   end

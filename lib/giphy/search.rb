@@ -7,7 +7,7 @@ module Giphy
 
     def translate(word)
       result = client.translate(word)
-      gif.build_batch_from(result)
+      gif.new(result)
     end
 
     def search(keyword, options={})
